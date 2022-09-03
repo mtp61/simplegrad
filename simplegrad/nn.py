@@ -1,4 +1,4 @@
-from simplegrad.engine import Num, relu, exp
+from simplegrad.engine import Num, relu, exp, log
 import random
 
 
@@ -75,4 +75,15 @@ def mse_loss(y_preds: list[Num], ys: list[Num]):
         error = y - y_pred
         loss += error * error
     return loss / Num(len(ys))
+
+
+def crossentropy_loss(y_preds: list[list[Num]], ys: list[int]):
+    total_loss = Num(0)
+    for y_pred, actual_class in zip(y_preds, ys):
+        expos = [exp(n) for n in y_pred]
+        expos_sum = Num(0)
+        for e in expos:
+            expos_sum += e
+        total_loss -= log(expos[actual_class] / expos_sum)
+    return total_loss
 
