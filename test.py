@@ -2,7 +2,7 @@ import os
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True' # TODO find a better solution
 
-from simplegrad import Num, relu, log, exp
+from simplegrad.engine import Num, relu, log, exp
 import torch
 import random
 import math

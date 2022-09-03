@@ -1,4 +1,4 @@
-from simplegrad import Num, display_dag, relu, log, exp
+from simplegrad.engine import Num, display_dag, relu, log, exp
 
 
 a = Num(2)
